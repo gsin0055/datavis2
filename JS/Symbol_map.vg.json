@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "height": 500,
+  "title": "Locations of Commonwealth funded Indigenous Ranger Program",
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/Australian_map.json",
+        "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightblue", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/graticules.json",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_10"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/indigenous_ranger_program_323973700297884924.csv"
+      },
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "LONGITUDE", "type": "quantitative"},
+        "latitude": {"field": "LATITUDE", "type": "quantitative"},
+        "color": {
+          "field": "NO_MAP",
+          "type": "quantitative",
+          "title": "Number of Rangers",
+          "scale": {"scheme": "reds"}
+        },
+        "tooltip": [
+          {"field": "NAME", "type": "nominal", "title": "Name"},
+          {"field": "NO_MAP", "type": "quantitative", "title": "Number of Rangers"},
+          {"field": "STATE", "type": "nominal", "title": "State"}
+        ]
+      }
+    }
+
+  ]
+}
