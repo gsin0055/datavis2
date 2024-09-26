@@ -17,7 +17,7 @@
         "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/graticules.json",
         "format": {"type": "topojson", "feature": "ne_110m_graticules_10"}
       },
-      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      "mark": {"type": "geoshape", "fill": null, "stroke": "black"}
     },
     {
       "data": {
