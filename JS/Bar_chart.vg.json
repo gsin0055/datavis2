@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 600,
-  "title": "Emission Reduction Techniques by Installation Year",
+  "title": "Groups based on State",
   "data": {
     "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/indigenous_ranger_program_323973700297884924.csv"
   },
