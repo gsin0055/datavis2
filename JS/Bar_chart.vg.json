@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 600,
+  "title": "Emission Reduction Techniques by Installation Year",
+  "data": {
+    "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/indigenous_ranger_program_323973700297884924.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+
+    "x": {"field": "STATE", "type": "nominal", "title": "State"},
+    "y": {"field": "NO_MAP", "type": "quantitative", "aggregate": "sum", "title": "Total Number of People"},
+    "color": {"field": "STATE", "type": "nominal","legend": {"title": "State"}}
+
+  },
+  "params": [
+
+    {
+      "name": "state_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "SA", "WA", "NSW", "VIC", "QLD","TAS","NT","ACT"],
+        "labels": ["Show All", "South Australia", "Western Australia", "New South Wales", "Victoria", "Queensland", "Tasmania", "Northern Territory","Australian Capital Territory"],
+        "name": "State: "
+      }
+    }
+  ],
+  "transform": [
+      {
+      "filter": "state_selection == null || datum.STATE == state_selection"
+    }
+  ]
+
+}

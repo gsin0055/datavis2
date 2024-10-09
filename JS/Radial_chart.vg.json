@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Groups per Regions",
+  "data": {
+    "url": "https://raw.githubusercontent.com/gsin0055/DV2/refs/heads/main/Data/indigenous_ranger_program_323973700297884924.csv"
+  },
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 50, "stroke": "#fff"}
+    }
+  ],
+
+  "encoding": {
+    "theta": {"field": "NO_MAP", "type": "quantitative", "aggregate": "sum", "title": "Total Number of Groups"},
+    "color": {"field": "REGION", "type": "nominal", "title": "Region"},
+    "tooltip": [
+      {"field": "REGION", "type": "nominal", "title": "Region"},
+      {"field": "NO_MAP", "type": "quantitative", "aggregate": "sum", "title": "Total Number of Groups"}
+    ]
+  },
+  "params": [
+
+    {
+      "name": "state_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "SA", "WA", "NSW", "VIC", "QLD","TAS","NT","ACT"],
+        "labels": ["Show All", "South Australia", "Western Australia", "New South Wales", "Victoria", "Queensland", "Tasmania", "Northern Territory","Australian Capital Territory"],
+        "name": "State: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "state_selection == null || datum.STATE == state_selection"
+    }
+  ]
+}
